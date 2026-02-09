@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizador de Memórias - IA Nativa</title>
+    <style>
+        :root {
+            --primary: #0071e3;
+            --bg-body: #f5f5f7;
+            --text-main: #1d1d1f;
+            --text-secondary: #86868b;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- HEADER & HERO --- */
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px 60px;
+            background: white;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            letter-spacing: -0.02em;
+            background: -webkit-linear-gradient(45deg, #1d1d1f, #434344);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        /* --- BOTÕES DE DOWNLOAD --- */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 36px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            min-width: 220px;
+        }
+
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        .btn:active { transform: scale(0.98); }
+
+        .btn-win { background-color: #0078D4; color: white; }
+        .btn-mac { background-color: #000000; color: white; }
+
+        /* --- CONTEÚDO --- */
+        .section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 60px;
+        }
+
+        /* --- FEATURES (GRID) --- */
+        .grid-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: transform 0.3s;
+        }
+        .feature-card:hover { transform: translateY(-5px); }
+
+        .icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+        .feature-card h3 { margin: 10px 0; font-size: 1.3rem; }
+        .feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
+
+        /* --- GALERIA DE PRINTS --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .gallery-item {
+            background: white;
+            padding: 15px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 1px solid #eee;
+        }
+
+        .gallery-caption {
+            margin-top: 15px;
+            font-weight: 600;
+            color: #555;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- INSTRUÇÕES --- */
+        .install-guide {
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        .os-column h3 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+        .step { display: flex; margin-bottom: 15px; align-items: start; }
+        .step-num { 
+            background: #eee; color: #333; 
+            width: 25px; height: 25px; 
+            border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 0.8rem; font-weight: bold; margin-right: 15px; flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .btn { width: 100%; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid #e5e5e5;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>Organizador de Memórias</h1>
+    <p class="subtitle">Não perca suas histórias na bagunça digital.<br>
+    Organização automática por rostos, locais e datas.</p>
+    
+    <div class="btn-container">
+        <a href="https://github.com/israelheleno/download-organizador/releases/download/v26.7/Instalador_V26.7.rar" class="btn btn-win">
+            <span>💻</span> Baixar para Windows
+        </a>
+        
+        <a href="https://github.com/israelheleno/download-organizador/releases/download/v26.7/Organizador_de_Fotos_v26.7.zip" class="btn btn-mac">
+            <span>🍎</span> Baixar para Mac
+        </a>
+    </div>
+    <p style="margin-top: 20px; font-size: 0.9rem; color: #999;">Versão 26.7 • Totalmente Offline & Seguro</p>
+</div>
+
+<div class="section">
+    <div class="grid-features">
+        <div class="feature-card">
+            <span class="icon">🧠</span>
+            <h3>Reconhecimento Facial</h3>
+            <p>O sistema aprende quem são as pessoas importantes. Ele agrupa fotos do "João" ou da "Maria" automaticamente, ignorando desconhecidos.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">🗑️</span>
+            <h3>Limpeza Inteligente</h3>
+            <p>Prints de tela, comprovantes de PIX e fotos de bolso são detectados e separados. Sua galeria fica limpa e focada apenas em memórias.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">🌍</span>
+            <h3>Geolocalização</h3>
+            <p>Viajou? O sistema lê o GPS das fotos e cria pastas como "2026-02-15 - Férias em Paris" sem você precisar digitar nada.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section" style="background-color: #fbfbfd; border-radius: 30px;">
+    <h2 class="section-title">Como funciona</h2>
+    
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="tela_inicial.png" alt="Interface Inicial">
+            <div class="gallery-caption">1. Interface simples: basta apontar a pasta.</div>
+        </div>
+        <div class="gallery-item">
+            <img src="reconhecimento.png" alt="IA Trabalhando">
+            <div class="gallery-caption">2. A IA identifica rostos e aprende nomes.</div>
+        </div>
+        <div class="gallery-item">
+            <img src="pastas.png" alt="Pastas Organizadas">
+            <div class="gallery-caption">3. Criação automática de estrutura lógica.</div>
+        </div>
+        <div class="gallery-item">
+            <img src="resultado.png" alt="Sucesso">
+            <div class="gallery-caption">4. Resultado final: tudo limpo e catalogado.</div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="install-guide">
+        <h2 class="section-title" style="margin-bottom: 40px;">Instalação</h2>
+        
+        <div class="grid-features" style="text-align: left;">
+            <div class="os-column">
+                <h3 style="color: #0078D4;">Windows</h3>
+                <div class="step"><span class="step-num">1</span> Baixe o arquivo <strong>.RAR</strong>.</div>
+                <div class="step"><span class="step-num">2</span> Extraia o conteúdo para uma pasta.</div>
+                <div class="step"><span class="step-num">3</span> Abra o <strong>Organizador.exe</strong>.</div>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">* Portátil: Pode rodar direto do Pen Drive.</p>
+            </div>
+
+            <div class="os-column">
+                <h3 style="color: #000;">Mac (Apple)</h3>
+                <div class="step"><span class="step-num">1</span> Baixe o arquivo <strong>.ZIP</strong> e descompacte.</div>
+                <div class="step"><span class="step-num">2</span> Dê dois cliques em <strong>CLIQUE_PARA_INSTALAR.command</strong>.</div>
+                <div class="step"><span class="step-num">3</span> Digite sua senha. O App abrirá sozinho.</div>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">* Compatível com processadores Intel e Apple Silicon.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Israel Heleno de Castro. Todos os direitos reservados.</p>
+    <p>Este software é licenciado sob termos proprietários. Proibida a venda ou modificação.</p>
+</footer>
+
+</body>
+</html>
