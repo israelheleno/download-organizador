@@ -8,11 +8,11 @@
         :root {
             --primary: #0071e3;
             --text-main: #ffffff;
-            --text-secondary: #c0c7d6; /* Levemente mais claro para melhor contraste agora */
+            --text-secondary: #c0c7d6;
             --accent: #58a6ff;
-            /* Cores dos cartões com transparência para ver o fundo */
-            --bg-card: rgba(22, 27, 34, 0.75); 
-            --border: rgba(255, 255, 255, 0.15); /* Borda um pouco mais definida */
+            /* Cartões com transparência (Glassmorphism) */
+            --bg-card: rgba(22, 27, 34, 0.70); 
+            --border: rgba(255, 255, 255, 0.15);
         }
         
         body {
@@ -23,16 +23,16 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
 
-            /* --- MÁGICA DO BACKGROUND AQUI (AJUSTADA) --- */
-            /* Camada 1: Degradê agora mais transparente (75% a 85%) */
-            /* Camada 2: A sua imagem tecnológica (JPG) */
+            /* --- MÁGICA DO BACKGROUND AQUI --- */
+            /* 1. Máscara Escura: Transparente (75% a 85%) para ver bem a imagem */
+            /* 2. Imagem Horizontal Nova */
             background-image: 
                 linear-gradient(to bottom, rgba(13, 17, 23, 0.75), rgba(13, 17, 23, 0.85)),
-                url('fundo.jpg'); 
+                url('fundo_horizontal.jpg'); 
             
-            background-size: cover;
-            background-position: center top;
-            background-attachment: fixed;
+            background-size: cover;       /* Preenche a tela toda */
+            background-position: center top; /* Centraliza a imagem */
+            background-attachment: fixed; /* O fundo fica parado ao rolar (Efeito Premium) */
             background-repeat: no-repeat;
             min-height: 100vh;
         }
@@ -50,7 +50,7 @@
             width: 900px;
             height: auto;
             border-radius: 25px;
-            /* Sombra forte para destacar o banner do fundo mais claro */
+            /* Sombra forte para destacar o banner do fundo */
             box-shadow: 0 25px 70px rgba(0,0,0,0.7); 
             margin-bottom: 40px;
             border: 1px solid var(--border);
@@ -62,7 +62,7 @@
             margin: 0 0 15px 0;
             letter-spacing: -0.02em;
             color: var(--text-main);
-            text-shadow: 0 4px 20px rgba(0,0,0,0.9); /* Sombra reforçada no texto */
+            text-shadow: 0 4px 20px rgba(0,0,0,0.9);
         }
 
         .subtitle {
@@ -137,7 +137,7 @@
 
         .feature-card {
             background: var(--bg-card);
-            backdrop-filter: blur(15px); /* Aumentei o desfoque para destacar mais */
+            backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             padding: 30px;
             border-radius: 20px;
@@ -149,7 +149,7 @@
         .feature-card:hover { 
             transform: translateY(-5px); 
             border-color: var(--accent);
-            background: rgba(22, 27, 34, 0.9);
+            background: rgba(22, 27, 34, 0.85);
         }
 
         .icon { font-size: 2.5rem; margin-bottom: 15px; display: block; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
@@ -223,7 +223,7 @@
             font-size: 0.85rem;
             margin-top: 40px;
             border-top: 1px solid var(--border);
-            background: rgba(0,0,0,0.5); /* Fundo do rodapé um pouco mais escuro para finalizar */
+            background: rgba(0,0,0,0.5);
         }
     </style>
 </head>
