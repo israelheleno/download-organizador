@@ -6,11 +6,13 @@
     <title>Organizador de Memórias - IA Nativa</title>
     <style>
         :root {
-            --primary: #0071e3;
-            --bg-body: #f5f5f7;
-            --text-main: #1d1d1f;
-            --text-secondary: #86868b;
-            --white: #ffffff;
+            /* PALETA DARK MODE PREMIUM */
+            --bg-body: #0d1117;       /* Fundo Profundo */
+            --bg-card: #161b22;       /* Fundo dos Cartões */
+            --border: #30363d;        /* Bordas Sutis */
+            --text-main: #ffffff;     /* Texto Principal */
+            --text-secondary: #8b949e;/* Texto Secundário (Prata) */
+            --accent: #58a6ff;        /* Azul Brilhante para detalhes */
         }
         
         body {
@@ -27,8 +29,8 @@
         .hero {
             text-align: center;
             padding: 40px 20px 60px;
-            background: white;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            background: radial-gradient(circle at top, #1c2128 0%, #0d1117 100%); /* Degradê sutil */
+            border-bottom: 1px solid var(--border);
         }
 
         .main-banner {
@@ -36,8 +38,9 @@
             width: 900px;
             height: auto;
             border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 0 50px rgba(0,0,0,0.5); /* Sombra brilhante no escuro */
             margin-bottom: 40px;
+            border: 1px solid var(--border);
         }
 
         h1 {
@@ -45,9 +48,8 @@
             font-weight: 700;
             margin: 0 0 15px 0;
             letter-spacing: -0.02em;
-            background: -webkit-linear-gradient(45deg, #1d1d1f, #434344);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-main);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .subtitle {
@@ -78,13 +80,23 @@
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             min-width: 220px;
         }
 
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
-        .btn-win { background-color: #0078D4; color: white; }
-        .btn-mac { background-color: #000000; color: white; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
+        
+        .btn-win { 
+            background-color: #0078D4; 
+            color: white; 
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Botão Mac agora é BRANCO para contrastar com o fundo escuro */
+        .btn-mac { 
+            background-color: #ffffff; 
+            color: #000000; 
+        }
 
         /* --- CONTEÚDO GERAL --- */
         .section {
@@ -98,6 +110,7 @@
             font-size: 2.2rem;
             font-weight: 600;
             margin-bottom: 50px;
+            color: var(--text-main);
         }
 
         /* --- FEATURES --- */
@@ -108,49 +121,67 @@
         }
 
         .feature-card {
-            background: white;
+            background: var(--bg-card);
             padding: 30px;
             border-radius: 20px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             transition: transform 0.3s;
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
         }
-        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.06); }
+        .feature-card:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--accent); /* Borda azul ao passar o mouse */
+        }
 
         .icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
-        .feature-card h3 { margin: 10px 0; font-size: 1.2rem; }
+        .feature-card h3 { margin: 10px 0; font-size: 1.2rem; color: var(--text-main); }
         .feature-card p { color: var(--text-secondary); font-size: 0.9rem; }
 
         /* --- ÁREA DA IMAGEM ÚNICA --- */
         .single-image-wrapper {
-            background: white;
-            padding: 30px;
+            background: var(--bg-card);
+            padding: 20px;
             border-radius: 30px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
             text-align: center;
+            border: 1px solid var(--border);
         }
 
         .main-showcase-img {
             width: 100%;
             height: auto;
             border-radius: 15px;
-            border: 1px solid #eee;
+            border: 1px solid var(--border);
+            opacity: 0.95; /* Leve transparência para integrar */
         }
 
         /* --- INSTRUÇÕES --- */
         .install-guide {
-            background: white;
+            background: var(--bg-card);
             border-radius: 25px;
             padding: 50px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            border: 1px solid var(--border);
         }
 
-        .os-column h3 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
-        .step { display: flex; margin-bottom: 15px; align-items: start; font-size: 0.95rem; }
+        .os-column h3 { 
+            border-bottom: 2px solid var(--border); 
+            padding-bottom: 10px; 
+            margin-bottom: 20px; 
+        }
+        
+        /* Cor específica para títulos nas instruções */
+        .os-win-title { color: #58a6ff; } /* Azul claro */
+        .os-mac-title { color: #ffffff; } /* Branco */
+
+        .step { display: flex; margin-bottom: 15px; align-items: start; font-size: 0.95rem; color: var(--text-secondary); }
+        .step strong { color: var(--text-main); }
+        
         .step-num { 
-            background: var(--primary); color: white;
+            background: #21262d; 
+            color: var(--accent);
+            border: 1px solid var(--border);
             width: 24px; height: 24px; 
             border-radius: 50%; 
             display: flex; align-items: center; justify-content: center; 
@@ -164,7 +195,7 @@
             .subtitle { font-size: 1.2rem; }
             .hero { padding-top: 20px; }
             .btn { width: 100%; }
-            .single-image-wrapper { padding: 15px; }
+            .single-image-wrapper { padding: 10px; }
         }
 
         footer {
@@ -173,6 +204,7 @@
             color: var(--text-secondary);
             font-size: 0.85rem;
             margin-top: 40px;
+            border-top: 1px solid var(--border);
         }
     </style>
 </head>
@@ -194,7 +226,7 @@
             <span>🍎</span> Baixar para Mac
         </a>
     </div>
-    <p style="margin-top: 20px; font-size: 0.9rem; color: #999;">Versão 26.7 • Processamento 100% Offline</p>
+    <p style="margin-top: 20px; font-size: 0.9rem; color: #484f58;">Versão 26.7 • Processamento 100% Offline</p>
 </div>
 
 <div class="section">
@@ -236,17 +268,17 @@
         
         <div class="grid-features" style="text-align: left; gap: 50px;">
             <div class="os-column">
-                <h3 style="color: #0078D4;">Windows</h3>
-                <div class="step"><span class="step-num">1</span> Baixe e extraia o arquivo <strong>.RAR</strong>.</div>
-                <div class="step"><span class="step-num">2</span> Abra o <strong>Organizador.exe</strong>.</div>
-                <div class="step"><span class="step-num">3</span> Não requer instalação (Portátil).</div>
+                <h3 class="os-win-title">Windows</h3>
+                <div class="step"><span class="step-num">1</span> <div>Baixe e extraia o arquivo <strong>.RAR</strong>.</div></div>
+                <div class="step"><span class="step-num">2</span> <div>Abra o <strong>Organizador.exe</strong>.</div></div>
+                <div class="step"><span class="step-num">3</span> <div>Não requer instalação (Portátil).</div></div>
             </div>
 
             <div class="os-column">
-                <h3 style="color: #000;">Mac (Apple)</h3>
-                <div class="step"><span class="step-num">1</span> Baixe e descompacte o arquivo <strong>.ZIP</strong>.</div>
-                <div class="step"><span class="step-num">2</span> Dê dois cliques em <strong>CLIQUE_PARA_INSTALAR.command</strong>.</div>
-                <div class="step"><span class="step-num">3</span> O App será movido para a pasta Aplicativos.</div>
+                <h3 class="os-mac-title">Mac (Apple)</h3>
+                <div class="step"><span class="step-num">1</span> <div>Baixe e descompacte o arquivo <strong>.ZIP</strong>.</div></div>
+                <div class="step"><span class="step-num">2</span> <div>Dê dois cliques em <strong>CLIQUE_PARA_INSTALAR.command</strong>.</div></div>
+                <div class="step"><span class="step-num">3</span> <div>O App será movido para a pasta Aplicativos.</div></div>
             </div>
         </div>
     </div>
@@ -254,7 +286,7 @@
 
 <footer>
     <p>© 2026 Israel Heleno de Castro. Todos os direitos reservados.</p>
-    <p style="opacity: 0.7;">Software protegido. Venda ou modificação não autorizada.</p>
+    <p style="opacity: 0.5;">Software protegido. Venda ou modificação não autorizada.</p>
 </footer>
 
 </body>
