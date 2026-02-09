@@ -23,16 +23,25 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION & BANNER --- */
         .hero {
             text-align: center;
-            padding: 100px 20px 60px;
+            padding: 40px 20px 60px;
             background: white;
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
+        .main-banner {
+            max-width: 100%;
+            width: 900px;
+            height: auto;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
         h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
             margin: 0 0 15px 0;
             letter-spacing: -0.02em;
@@ -42,11 +51,11 @@
         }
 
         .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--text-secondary);
             font-weight: 300;
             max-width: 800px;
-            margin: 0 auto 40px;
+            margin: 0 auto 30px;
         }
 
         /* --- BOTÕES --- */
@@ -91,7 +100,7 @@
             margin-bottom: 50px;
         }
 
-        /* --- FEATURES (GRID 4 ÍCONES) --- */
+        /* --- FEATURES --- */
         .grid-features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -113,51 +122,20 @@
         .feature-card h3 { margin: 10px 0; font-size: 1.2rem; }
         .feature-card p { color: var(--text-secondary); font-size: 0.9rem; }
 
-        /* --- NOVA GALERIA TIPO COLAGEM --- */
-        .collage-wrapper {
+        /* --- ÁREA DA IMAGEM ÚNICA --- */
+        .single-image-wrapper {
             background: white;
-            padding: 40px;
+            padding: 30px;
             border-radius: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-        
-        .gallery-item {
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
             text-align: center;
         }
-        
-        /* Moldura para fixar o tamanho da imagem e evitar distorção */
-        .img-frame {
-            height: 250px; /* Altura fixa para uniformidade */
+
+        .main-showcase-img {
             width: 100%;
-            overflow: hidden;
+            height: auto;
             border-radius: 15px;
             border: 1px solid #eee;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .img-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* O segredo: preenche sem esticar */
-            object-position: center top; /* Foca na parte superior/centro da imagem */
-            transition: transform 0.4s ease;
-        }
-        
-        .gallery-item:hover .img-frame img {
-            transform: scale(1.05); /* Zoom suave ao passar o mouse */
-        }
-
-        .gallery-caption {
-            margin-top: 15px;
-            font-weight: 600;
-            color: #555;
-            font-size: 0.95rem;
         }
 
         /* --- INSTRUÇÕES --- */
@@ -182,10 +160,11 @@
 
         /* Responsividade */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .gallery-grid { grid-template-columns: 1fr; } /* Vira 1 coluna no celular */
-            .img-frame { height: auto; aspect-ratio: 16/9; } /* No celular, usa proporção padrão */
+            h1 { font-size: 2.2rem; }
+            .subtitle { font-size: 1.2rem; }
+            .hero { padding-top: 20px; }
             .btn { width: 100%; }
+            .single-image-wrapper { padding: 15px; }
         }
 
         footer {
@@ -200,6 +179,8 @@
 <body>
 
 <div class="hero">
+    <img src="banner.jpg" alt="Organizador de Memórias Banner" class="main-banner">
+    
     <h1>Organizador de Memórias</h1>
     <p class="subtitle">Suas histórias merecem ser encontradas.<br>
     Organização automática local usando Inteligência Artificial.</p>
@@ -219,11 +200,13 @@
 <div class="section">
     <div class="grid-features">
         <div class="feature-card">
-            <span class="icon">👤</span> <h3>Reconhecimento Facial</h3>
+            <span class="icon">👤</span>
+            <h3>Reconhecimento Facial</h3>
             <p>Identifica seus amigos e familiares, agrupando as fotos de cada pessoa automaticamente.</p>
         </div>
         <div class="feature-card">
-            <span class="icon">🧠</span> <h3>Ferramentas de IA</h3>
+            <span class="icon">🧠</span>
+            <h3>Ferramentas de IA</h3>
             <p>Redes neurais avançadas processam tudo no seu próprio computador, sem enviar dados para a nuvem.</p>
         </div>
         <div class="feature-card">
@@ -242,33 +225,8 @@
 <div class="section">
     <h2 class="section-title">Visualização do Processo</h2>
     
-    <div class="collage-wrapper">
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <div class="img-frame">
-                    <img src="tela_inicial.png" alt="Interface Inicial">
-                </div>
-                <div class="gallery-caption">1. Aponte a pasta bagunçada</div>
-            </div>
-            <div class="gallery-item">
-                <div class="img-frame">
-                    <img src="reconhecimento.png" alt="IA Trabalhando">
-                </div>
-                <div class="gallery-caption">2. IA identifica rostos e eventos</div>
-            </div>
-            <div class="gallery-item">
-                <div class="img-frame">
-                    <img src="pastas.png" alt="Pastas Organizadas">
-                </div>
-                <div class="gallery-caption">3. Sugere nomes lógicos</div>
-            </div>
-            <div class="gallery-item">
-                <div class="img-frame">
-                    <img src="resultado.png" alt="Sucesso">
-                </div>
-                <div class="gallery-caption">4. Resultado: Memórias organizadas</div>
-            </div>
-        </div>
+    <div class="single-image-wrapper">
+        <img src="visaogeral.jpg" alt="Visão Geral do Processo" class="main-showcase-img">
     </div>
 </div>
 
